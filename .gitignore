@@ -1,0 +1,28 @@
+# Ignore as pastas
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Poetry
+poetry.lock
+.python-version
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.swp
+*.bak
+*.tmp
+
+# Ignore virtual environments
+venv/
+.venv/
+.env
