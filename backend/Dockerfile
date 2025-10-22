@@ -1,18 +1,17 @@
-FROM python:3.12-slim
+# Dockerfile-backend
 
-# Instalar ferramentas de compilação
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+# Imagem base
+FROM python:3.9
 
-WORKDIR /src
+# Definir o diretório de trabalho no container
+WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Copiar os arquivos de dependências e instalar
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
-COPY . .
+# Copiar o restante dos arquivos do projeto
+COPY . /app
 
-EXPOSE 8000
-
+# Comando para executar a aplicação
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
